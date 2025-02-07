@@ -10,18 +10,26 @@ export default function Index() {
 
   // press a button to call validation methods on both textInput associated values.
   const checkFields = () => {
-    checkUsername(username);
+    checkUsernameLength(username);
+    checkPasswordFormat(password);
   };
 
   // call a validation method from the Validations class, which uses regex.
-  const checkUsername = (username: string) => {
-    if (Validations.validateEmail(username)) {
-      alert('valid email');
-    } else {
-      alert('Invalid email');
-    }
+  const checkUsernameLength = (username: string) => {
+    if (!Validations.validateUsernameLength(username)) {
+      console.log("Invalid username"); //testing purposes
+      alert('Username must be at least 5 characters long');
+    } 
   }
 
+  const checkPasswordFormat = (password: string) => {
+  
+    if (!Validations.validatePasswordFormat(password)) {
+      console.log("Invalid password"); //testing purposes
+      alert('Password In wrong format');
+    } 
+    
+  };
   return (
     <View>
       <TextInput style={styles.inputField} placeholder="Username" value={username} onChangeText={setUsername}/>
