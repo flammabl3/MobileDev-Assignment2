@@ -15,23 +15,23 @@ class Validations {
         const number = /\d/;
 
         if (password.length < min_length) {
-            errors.push('Password must be at least 8 characters long.');
+            errors.push('Password must be at least 8 characters long. \n');
         }
 
         if (!upper.test(password)) {
-            errors.push('Password must have at least one uppercase letter.');
+            errors.push('Password must have at least one uppercase letter. \n');
         }
 
         if (!lower.test(password)) {
-            errors.push('Password must have at least one lowercase letter.');
+            errors.push('Password must have at least one lowercase letter. \n');
         }
 
         if (!special.test(password)) {
-            errors.push('Password must have at least one special character.');
+            errors.push('Password must have at least one special character. \n');
         }
 
         if (!number.test(password)) {
-            errors.push('Password must have at least one number.');
+            errors.push('Password must have at least one number. \n');
         }
         
         return errors.length === 0 ? true : errors;

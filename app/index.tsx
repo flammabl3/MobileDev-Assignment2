@@ -1,26 +1,40 @@
 // Date Created: 7/2/25
-// Author: Neeraj Bachwani, Harry Jung
+// Author: Neeraj Bachwani, Harry Jung, Abhijith Krishnan
 // Description: This file contains the main login page of the app.
 
-import { View, Text, TextInput, Button } from "react-native";
+
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+} from "react-native";
 import { StyleSheet } from "react-native";
-import Validations from '../components/validations';
+import Validations from "../components/validations";
 import { useEffect, useState } from "react";
 import Credentials from "../credentials.json";
+import { useRouter } from "expo-router";
 
 export default function Index() {
-  const defaultMsg = 'The following error was found: \n';
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const defaultMsg = "The following error was found: \n";
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [alertMsg, setAlertMsg] = useState(defaultMsg);
 
-  // Press a button to call validation methods on both textInput associated values.
+  const route = useRouter();
+
+  // press a button to call validation methods on both textInput associated values.
   const checkFields = () => {
     setAlertMsg(defaultMsg);
 
+    if (alertMsg !== defaultMsg) {
+      return;
+    }
     if (!checkUsernameFormat(username)) return;
     if (!checkPasswordFormat(password)) return;
     if (!validateCredentials(username, password)) return;
+
+    route.push("/welcome");
   };
 
   // Call a validation method from the Validations class which checks if the username is at least 5 characters long.
@@ -50,13 +64,13 @@ export default function Index() {
 
     // Checking if user exists
     if (!user) {
-      setAlertMsg(prevMsg => prevMsg + "User not found.");
+      setAlertMsg((prevMsg) => prevMsg + "User not found.\n");
       return false;
     }
 
     // Matching the password
     if (user.password !== password) {
-      setAlertMsg(prevMsg => prevMsg + "Incorrect password.");
+      setAlertMsg((prevMsg) => prevMsg + "Incorrect password.\n");
       return false;
     }
 
@@ -65,23 +79,43 @@ export default function Index() {
 
   return (
     <View>
-      <TextInput style={styles.inputField} placeholder="Username" value={username} onChangeText={setUsername} />
-      <TextInput secureTextEntry={true} style={styles.inputField} placeholder="Password" value={password} onChangeText={setPassword} />
+      <TextInput
+        style={styles.inputField}
+        placeholder="Username"
+        value={username}
+        onChangeText={setUsername}
+      />
+      <TextInput
+        secureTextEntry={true}
+        style={styles.inputField}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+      />
       <Button title="Submit" onPress={() => checkFields()} />
-      <Text style={styles.errorText}>{alertMsg !== defaultMsg ? alertMsg : ''}</Text>
+      <Text style={styles.errorText}>
+        {alertMsg !== defaultMsg ? alertMsg : ""}
+      </Text>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({
   inputField: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: "black",
     padding: 10,
     margin: 10,
     borderRadius: 5,
   },
   errorText: {
-    color: 'red',
-  }
+    color: "red",
+  },
+  image: {
+    width: 300,
+    height: 200,
+    marginBottom: 16,
+  },
+  
 });
