@@ -10,7 +10,7 @@ import {
   Button,
 } from "react-native";
 import { StyleSheet } from "react-native";
-import Validations from '../components/validations';
+import Validations from "../components/validations";
 import { useEffect, useState } from "react";
 import Credentials from "../credentials.json"
 import { useRouter } from "expo-router";
@@ -30,6 +30,7 @@ export default function Index() {
     checkPasswordFormat(password);
     validateCredentials(username, password);
 
+<<<<<<< Updated upstream
     if (alertMsg !== defaultMsg) {
       return;
     }
@@ -109,7 +110,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   inputField: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: "black",
     padding: 10,
     margin: 10,
     borderRadius: 5,
