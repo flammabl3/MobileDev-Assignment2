@@ -30,7 +30,6 @@ export default function Index() {
     checkPasswordFormat(password);
     validateCredentials(username, password);
 
-<<<<<<< Updated upstream
     if (alertMsg !== defaultMsg) {
       return;
     }
@@ -70,13 +69,13 @@ export default function Index() {
 
     // Checking if user exists
     if (!user) {
-      setAlertMsg((prevMsg) => prevMsg + "User not found.");
+      setAlertMsg((prevMsg) => prevMsg + "User not found.\n");
       return false;
     }
 
     // Matching the password
     if (user.password !== password) {
-      setAlertMsg((prevMsg) => prevMsg + "Incorrect password.");
+      setAlertMsg((prevMsg) => prevMsg + "Incorrect password.\n");
       return false;
     }
 
