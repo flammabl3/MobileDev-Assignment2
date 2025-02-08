@@ -1,3 +1,8 @@
+// Date Created: 7/2/25
+//Author: Neeraj Bachwani , Harry Jung
+// Description: This file contains the main login page of the app. It contains two text inputs for the user to enter their username and password. It also contains a button which when pressed calls the checkFields method which in turn calls the checkUsernameLength, checkPasswordFormat and validateCredentials methods. The checkUsernameLength method checks if the username is at least 5 characters long, the checkPasswordFormat method checks if the password is in the correct format and the validateCredentials method checks if the credentials entered by the user match the credentials stored in the credentials.json file. If any of the validations fail, an alert is shown to the user. If all validations pass, the user is routed to the next page (TBD by Abhijith).
+
+
 import { View, Text, TextInput, Button } from "react-native";
 import { StyleSheet } from "react-native";
 import Validations from '../components/validations';
