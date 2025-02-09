@@ -3,13 +3,7 @@
 // Description: This file contains the main login page of the app.
 
 
-import {
-  View,
-  Text,
-  TextInput,
-  Button,
-} from "react-native";
-import { StyleSheet } from "react-native";
+import {View,Text,TextInput,Button,StyleSheet} from "react-native";
 import Validations from "../components/validations";
 import { useEffect, useState } from "react";
 import Credentials from "../credentials.json";
@@ -27,9 +21,6 @@ export default function Index() {
   const checkFields = () => {
     setAlertMsg(defaultMsg);
 
-    if (alertMsg !== defaultMsg) {
-      return;
-    }
     if (!checkUsernameFormat(username)) return;
     if (!checkPasswordFormat(password)) return;
     if (!validateCredentials(username, password)) return;
